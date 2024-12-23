@@ -14,40 +14,21 @@ model User {
   email         String         @unique
   image         String?
   searchHistory SearchHistory[]
-  favoriteTV    FavoriteTV[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt @default(now())
 }
 
-model Movie {
+model Movie {  
   id          Int       @id @default(autoincrement())
   title       String
   overview    String
   releaseDate DateTime
   posterPath  String?
-  genres      Genre[]   @relation("MovieGenres") // Many-to-many relation with Genre
-  movieGenres MovieGenre[] // Add this line to define the opposite relation to MovieGenre
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt @default(now())
 }
 
-model Genre {
-  id          Int       @id @default(autoincrement())
-  name        String
-  movies      Movie[]   @relation("MovieGenres") // Many-to-many relation with Movie
-  movieGenres MovieGenre[] // Add this line to define the opposite relation to MovieGenre
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt @default(now())
-}
 
-model MovieGenre {
-  movieId     Int
-  genreId     Int
-  movie       Movie      @relation(fields: [movieId], references: [id])
-  genre       Genre      @relation(fields: [genreId], references: [id])
-
-  @@id([movieId, genreId]) // Composite primary key
-}
 
 model SearchHistory {
   id          Int      @id @default(autoincrement())
@@ -61,14 +42,3 @@ model SearchHistory {
   user User @relation(fields: [userId], references: [id])
 }
 
-model FavoriteTV {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  tvShowId    Int
-  title       String
-  image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt @default(now())
-
-  user User @relation(fields: [userId], references: [id])
-}

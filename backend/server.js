@@ -27,7 +27,7 @@ app.use('/api/movies', protectRoute, movieRoutes);
 app.use('/api/v1/tv', protectRoute, tvRoutes);
 app.use('/api/v1/search', protectRoute, searchRoutes);
 
-console.log("TMDB_API_KEY:", process.env.TMDB_API_KEY);
+//console.log("TMDB_API_KEY:", process.env.TMDB_API_KEY);
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
