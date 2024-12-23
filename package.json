@@ -11,7 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@prisma/client": "^6.0.1",
+    "@prisma/client": "^6.1.0",
     "axios": "^1.7.3",
     "axios-retry": "^4.5.0",
     "bcryptjs": "^2.4.3",

@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-// import { ENV_VARS } from "../config/envVars.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,8 +12,10 @@ export const generateTokenAndSetCookie = (userId, res) => {
     httpOnly: true,
     sameSite: true,
     
+    
   });
   return token;
 };
+console.log("token",generateTokenAndSetCookie);
 
 
